@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='~/Content/Client/Layout/css/fullcalendar.css'>
+    <link rel='stylesheet' href='~/Content/Client/Layout/css/datatables/datatables.css'>
+    <link rel='stylesheet' href='~/Content/Client/Layout/css/datatables/bootstrap.datatables.css'>
+    <link rel='stylesheet' href='~/Content/Client/Layout/scss/chosen.css'>
+    <link href="~/Content/Client/Layout/scss/font-awesome/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Client/Layout/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='~/Content/Client/Layout/css/app.css'>
+    <link href="~/Content/Client/Layout/favicon.ico" rel="shortcut icon">
+    <link href="~/Content/Client/Layout/apple-touch-icon.png" rel="apple-touch-icon">
+    <script src="~/Content/jquery-1.12.1.min.js"></script>
+    <title>Quản Lý Nhân Viên</title>
+</head>
+<body>
+    <div class="all-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse">
+                    <a href="@Url.Action("Index","Home")" class="logo hidden-sm hidden-xs">
+                        <i class="icon-cloud-download"></i>
+                        <span>SDC Test Project</span>
+                    </a>
+                    <div class="relative-w">
+                        <ul class="side-menu side-menu-red">
+                            <li>
+                                <a href="@Url.Action("Index","Home")">
+                                    <i class="icon-dashboard"></i> Trang chủ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","NhanVien")">
+                                    <i class="icon-bar-chart"></i> Quản Lý Nhân Viên
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="content-wrapper wood-wrapper">
+                    <div class="content-inner">
+                        <div class="page-header page-header-red">
+                            <div class="header-links hidden-xs">
+                                <a href=""><i class="icon-signout"></i> Logout</a>
+                            </div>
+                            <h1>
+                               Something....
+                            </h1>
+                        </div>
+                        <div class="main-content">
+                            @if (TempData["AlertMessage"] != null)
+                            {
+                                <div id="AlertBox" class="alert @TempData["AlertType"]">
+                                    @TempData["AlertMessage"]
+                                </div>
+                            }
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/jquery-1.12.1.min.js"></script>
+    <script src='~/Content/Client/Layout/js/jquery.sparkline.min.js'></script>
+    <script src='~/Content/Client/Layout/js/bootstrap/tab.js'></script>
+    <script src='~/Content/Client/Layout/js/bootstrap/dropdown.js'></script>
+    <script src='~/Content/Client/Layout/js/bootstrap/collapse.js'></script>
+    <script src='~/Content/Client/Layout/js/bootstrap/transition.js'></script>
+    <script src='~/Content/Client/Layout/js/bootstrap/tooltip.js'></script>
+    <script src='~/Content/Client/Layout/js/jquery.knob.js'></script>
+    <script src='~/Content/Client/Layout/js/fullcalendar.min.js'></script>
+    <script src='~/Content/Client/Layout/js/datatables/datatables.min.js'></script>
+    <script src='~/Content/Client/Layout/js/chosen.jquery.min.js'></script>
+    <script src='~/Content/Client/Layout/js/datatables/bootstrap.datatables.js'></script>
+    <script src='~/Content/Client/Layout/js/raphael-min.js'></script>
+    <script src='~/Content/Client/Layout/js/morris-0.4.3.min.js'></script>
+    <script src='~/Content/Client/Layout/js/for_pages/color_settings.js'></script>
+    <script src='~/Content/Client/Layout/js/application.js'></script>
+    <script src='~/Content/Client/Layout/js/for_pages/dashboard.js'></script>
+    @RenderSection("jsFooter", false)
+</body>
+</html>
