@@ -283,6 +283,7 @@
     <Content Include="Content\Client\Plugins\BootstrapValidator\js\language\zh_TW.js" />
     <Content Include="Content\Client\Plugins\Datepicker\AUTHORS.txt" />
     <Content Include="Content\Client\Plugins\Datepicker\external\jquery\jquery.js" />
+    <Content Include="Content\Client\Plugins\Datepicker\images\date.png" />
     <Content Include="Content\Client\Plugins\Datepicker\images\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="Content\Client\Plugins\Datepicker\images\ui-bg_glass_65_ffffff_1x400.png" />
     <Content Include="Content\Client\Plugins\Datepicker\images\ui-bg_glass_75_dadada_1x400.png" />

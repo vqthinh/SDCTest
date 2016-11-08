@@ -32,7 +32,13 @@
                 return false;
             });
 
-        $("#NgaySinh").datepicker({ dateFormat: 'dd/mm/yy' });
+        $("#NgaySinh").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true, autoclose: true,yearRange:"1900:+nn" });
+        $("#NgaySinh").change(function() {
+            // Revalidate the date field
+            $("#NgaySinh").datepicker("hide");
+            $('#form-nhanvien-insert').data('bootstrapValidator').revalidateField('NgaySinh');
+            $('#form-nhanvien-update').data('bootstrapValidator').revalidateField('NgaySinh');
+        });
 
         $('#form-nhanvien-insert')
             .bootstrapValidator({
@@ -70,9 +76,19 @@
                                 message: 'Email không đúng định dạng'
                             }
                         }
+                    },
+                    NgaySinh: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Ngày sinh không được để trống'
+                            }
+                        }
                     }
                 }
             });
+        $("#datePick").click(function () {
+            $("#NgaySinh").datepicker("show");
+        });
 
         $('#form-nhanvien-update')
             .bootstrapValidator({
@@ -108,6 +124,13 @@
                             },
                             emailAddress: {
                                 message: 'Email không đúng định dạng'
+                            }
+                        }
+                    },
+                    NgaySinh: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Ngày sinh không được để trống'
                             }
                         }
                     }
