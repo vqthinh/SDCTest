@@ -3,35 +3,7 @@
     ViewBag.Title = "Cập nhật nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#TinhThanh").change(function () {
-            $("#Quan").empty();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetQuan")',
-
-                dataType: 'json',
-
-                data: { id: $("#TinhThanh").val() },
-
-                success: function (quans) {
-
-
-                    $.each(quans, function (i, quan) {
-                        $("#Quan").append('<option value="' + quan.Value + '">' +
-                         quan.Text + '</option>');
-
-                    });
-                },
-                error: function (ex) {
-                    alert('Lỗi.' + ex);
-                }
-            });
-            return false;
-        });
-    });
-</script>
+<script src="~/Scripts/Client/jsNhanVien.js"></script>
 <div class="widget">
     <h3 class="section-title first-title">
         <i class="icon-table"></i>Thông tin nhân viên
@@ -39,7 +11,7 @@
     <div class="widget-content-white glossed">
         <div class="padded">
 
-            @using (Html.BeginForm("Create", "NhanVien", FormMethod.Post, new {@class = "form-horizontal", role = "form", enctype = "multipart/form-data", id = "form-product-insert"}))
+            @using (Html.BeginForm("Create", "NhanVien", FormMethod.Post, new {@class = "form-horizontal", role = "form", enctype = "multipart/form-data", id = "form-nhanvien-update"}))
             {
                 @Html.AntiForgeryToken()
                 <h3 class="form-title form-title-first">

@@ -13,9 +13,9 @@ namespace SDCTest.Web.Controllers
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
         // GET: NhanVien
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 1)
         {
-            return View(unitOfWork.NhanVienRepository.Get(null,null));
+            return View(unitOfWork.NhanVienRepository.GetPaging(null,q=>q.OrderBy(x=>x.ID),page,pageSize));
         }
 
         public ActionResult Create()

@@ -1,4 +1,5 @@
-﻿using SDCTest.Data.Infrastructure;
+﻿using PagedList;
+using SDCTest.Data.Infrastructure;
 using SDCTest.Model.Models;
 
 namespace SDCTest.Data.Repositories
@@ -8,5 +9,6 @@ namespace SDCTest.Data.Repositories
         public NhanVienRepository(SDCTestDbContext context) : base(context)
         {
         }
+
     }
 }

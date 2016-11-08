@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SDCTest.Model.Models.NhanVien>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<SDCTest.Model.Models.NhanVien>
 
 @{
     ViewBag.Title = "Danh sách nhân viên";
@@ -56,4 +57,5 @@
         </tr>
     }
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 <a class="btn btn-primary btn-lg" href="/NhanVien/Create">Thêm mới + </a>

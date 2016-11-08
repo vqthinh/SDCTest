@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using PagedList;
 
 namespace SDCTest.Data.Infrastructure
 {
@@ -43,6 +44,19 @@ namespace SDCTest.Data.Infrastructure
             }
         }
 
+        public virtual IPagedList<TEntity> GetPaging(
+           Expression<Func<TEntity, bool>> filter = null,
+           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy=null,int pageNumber = 5,int pageSize=10)
+        {
+            IQueryable<TEntity> query = dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+                return orderBy(query).ToPagedList(pageNumber,pageSize);
+        }
+
         public virtual TEntity GetByID(object id)
         {
             return dbSet.Find(id);
@@ -73,5 +87,7 @@ namespace SDCTest.Data.Infrastructure
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+
+
     }
 }
