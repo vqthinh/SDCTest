@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201611070739189_Initial.Designer.cs">
       <DependentUpon>201611070739189_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611080254357_update-validate-models.cs" />
+    <Compile Include="Migrations\201611080254357_update-validate-models.Designer.cs">
+      <DependentUpon>201611080254357_update-validate-models.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NhanVienRepository.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611070739189_Initial.resx">
       <DependentUpon>201611070739189_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611080254357_update-validate-models.resx">
+      <DependentUpon>201611080254357_update-validate-models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

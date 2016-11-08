@@ -13,13 +13,13 @@ namespace SDCTest.Model.Models
     {
         [Key]
         public int ID { get; set; }
-
+        [Required]
         public string HoTen { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime NgaySinh { get; set; }
-
+        [Required]
         public string Email { get; set; }
-
+        [Required]
         public string SDT { get; set; }
 
         public int TinhThanhID { get; set; }

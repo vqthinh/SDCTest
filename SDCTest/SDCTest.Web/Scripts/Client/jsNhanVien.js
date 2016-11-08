@@ -32,6 +32,8 @@
                 return false;
             });
 
+        $("#NgaySinh").datepicker({ dateFormat: 'dd/mm/yy' });
+
         $('#form-nhanvien-insert')
             .bootstrapValidator({
                 message: 'This value is not valid',

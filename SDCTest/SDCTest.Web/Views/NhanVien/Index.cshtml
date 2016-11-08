@@ -50,6 +50,7 @@
                 </a>
                 @Ajax.ActionLink(" ", "Delete", new {@id = item.ID}, new AjaxOptions()
                 {
+                    Confirm = "Bạn có muốn xóa nhân viên này không?",
                     OnComplete = "$('#row_" + @item.ID + "').remove()",
                     HttpMethod = "Delete"
                 }, new {@class = "btn delete-asset btn-danger btn-sm icon icon-trash", @style = "width: 40px; height: 40px;font-size: 20px"})

@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-xs-2 control-label">Ngày sinh</label>
-                        <div class="col-xs-10">@Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", @name = "NgaySinh" })</div>
+                        <div class="col-xs-10">@Html.TextBoxFor(model => model.NgaySinh, "{0:dd/MM/yyyy}", new { @class = "form-control", @name = "NgaySinh", @id = "NgaySinh" })</div>
 
                     </div>
                     <div class="form-group">
