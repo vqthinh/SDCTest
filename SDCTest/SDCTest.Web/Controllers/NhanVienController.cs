@@ -14,18 +14,17 @@ namespace SDCTest.Web.Controllers
         IQuanRepository _quanRepository;
         ITinhThanhRepository _tinhThanhRepository;
 
-        public NhanVienController(IUnitOfWork unitOfWork,INhanVienRepository nhanVienRepository,IQuanRepository quanRepository,ITinhThanhRepository tinhThanhRepository)
+        public NhanVienController(IUnitOfWork unitOfWork, INhanVienRepository nhanVienRepository, IQuanRepository quanRepository, ITinhThanhRepository tinhThanhRepository)
         {
             _unitOfWork = unitOfWork;
             _nhanVienRepository = nhanVienRepository;
             _quanRepository = quanRepository;
             _tinhThanhRepository = tinhThanhRepository;
         }
-
         // GET: NhanVien
         public ActionResult Index(int page = 1, int pageSize = 3)
         {
-            return View(_nhanVienRepository.GetPaging(null,q=>q.OrderBy(x=>x.ID),page,pageSize));
+            return View(_nhanVienRepository.GetPaging(null, q => q.OrderBy(x => x.ID), page, pageSize));
         }
 
         public ActionResult Create()
@@ -48,7 +47,7 @@ namespace SDCTest.Web.Controllers
                 }
             }
             catch (DataException)
-            {    
+            {
                 ModelState.AddModelError("", "Lỗi, không thể thêm.");
             }
             GetDropDown();
@@ -58,7 +57,7 @@ namespace SDCTest.Web.Controllers
         public ActionResult Edit(int id)
         {
             NhanVien nhanVien = _nhanVienRepository.GetByID(id);
-            GetDropDown(nhanVien.QuanID,nhanVien.TinhThanhID);
+            GetDropDown(nhanVien.QuanID, nhanVien.TinhThanhID);
             return View(nhanVien);
         }
 
@@ -79,7 +78,7 @@ namespace SDCTest.Web.Controllers
             {
                 ModelState.AddModelError("", "Lỗi, không thể cập nhật.");
             }
-            GetDropDown(nhanVien.QuanID,nhanVien.TinhThanhID);
+            GetDropDown(nhanVien.QuanID, nhanVien.TinhThanhID);
             return View(nhanVien);
         }
 
@@ -91,9 +90,9 @@ namespace SDCTest.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        private void GetDropDown(int? selectedQuan=null,int? selectedTinhThanh=null)
+        private void GetDropDown(int? selectedQuan = null, int? selectedTinhThanh = null)
         {
-            var listQuan = _quanRepository.Get(filter: x =>x.TinhThanhID==1, orderBy: null);
+            var listQuan = _quanRepository.Get(filter: x => x.TinhThanhID == 1, orderBy: null);
             var listTinhThanh = _tinhThanhRepository.Get(null, null);
             if (selectedQuan == null)
             {
@@ -109,7 +108,7 @@ namespace SDCTest.Web.Controllers
 
         public JsonResult GetQuan(int id)
         {
-            var listQuan = _quanRepository.Get(x=>x.TinhThanhID==id, null);
+            var listQuan = _quanRepository.Get(x => x.TinhThanhID == id, null);
             return Json(new SelectList(listQuan, "ID", "TenQuan"));
         }
 

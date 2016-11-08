@@ -7,7 +7,7 @@ namespace SDCTest.Data.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
-        private SDCTestDbContext context = new SDCTestDbContext();
+        private SDCTestDbContext context;
 
         public UnitOfWork(IDbFactory dbFactory)
         {
@@ -19,7 +19,7 @@ namespace SDCTest.Data.Infrastructure
         }
         public void Commit()
         {
-            context.SaveChanges();
+            DbContext.SaveChanges();
         }
     }
 }

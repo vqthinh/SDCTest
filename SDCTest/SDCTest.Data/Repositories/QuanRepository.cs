@@ -13,7 +13,7 @@ namespace SDCTest.Data.Repositories
         
     }
 
-    public class QuanRepository : GenericRepository<Quan>
+    public class QuanRepository : GenericRepository<Quan>,IQuanRepository
     {
         public QuanRepository(IDbFactory dbFactory) : base(dbFactory)
         {

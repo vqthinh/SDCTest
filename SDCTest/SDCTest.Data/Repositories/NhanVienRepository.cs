@@ -10,7 +10,7 @@ namespace SDCTest.Data.Repositories
     {
         //Add some external function
     }
-    public class NhanVienRepository : GenericRepository<NhanVien>
+    public class NhanVienRepository : GenericRepository<NhanVien>,INhanVienRepository
     {
         public NhanVienRepository(IDbFactory dbFactory) : base(dbFactory)
         {

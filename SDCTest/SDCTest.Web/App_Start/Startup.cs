@@ -38,7 +38,7 @@ namespace SDCTest.Web
             builder.RegisterAssemblyTypes(typeof(NhanVienRepository).Assembly)
                .Where(t => t.Name.EndsWith("Repository"))
                .AsImplementedInterfaces().AsSelf().InstancePerRequest();
-            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
+        
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

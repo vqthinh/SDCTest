@@ -12,7 +12,7 @@ namespace SDCTest.Data.Repositories
     {
         //Add some external function
     }
-    public class TinhThanhRepository : GenericRepository<TinhThanh>
+    public class TinhThanhRepository : GenericRepository<TinhThanh>,ITinhThanhRepository
     {
         public TinhThanhRepository(IDbFactory dbFactory) : base(dbFactory)
         {

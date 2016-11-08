@@ -7,7 +7,7 @@ using PagedList;
 
 namespace SDCTest.Data.Infrastructure
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private SDCTestDbContext context;
         private readonly IDbSet<TEntity> dbSet;
@@ -26,7 +26,7 @@ namespace SDCTest.Data.Infrastructure
         protected GenericRepository(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
-            this.dbSet = context.Set<TEntity>();
+            this.dbSet = DbContext.Set<TEntity>();
         }
 
         public virtual IEnumerable<TEntity> Get(
