@@ -7,20 +7,26 @@ using PagedList;
 
 namespace SDCTest.Data.Infrastructure
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal SDCTestDbContext context;
-        internal DbSet<TEntity> dbSet;
+        private SDCTestDbContext context;
+        private readonly IDbSet<TEntity> dbSet;
 
-        public GenericRepository(SDCTestDbContext context)
+        protected IDbFactory DbFactory
         {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
+            get;
+            private set;
         }
 
-        public virtual IEnumerable<TEntity> GetWithRawSql(string query, params object[] parameters)
+        protected SDCTestDbContext DbContext
         {
-            return dbSet.SqlQuery(query, parameters).ToList();
+            get { return context ?? (context = DbFactory.Init()); }
+        }
+
+        protected GenericRepository(IDbFactory dbFactory)
+        {
+            DbFactory = dbFactory;
+            this.dbSet = context.Set<TEntity>();
         }
 
         public virtual IEnumerable<TEntity> Get(

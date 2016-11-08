@@ -57,7 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\GenericRepository.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Migrations\201611070739189_Initial.cs" />
     <Compile Include="Migrations\201611070739189_Initial.Designer.cs">
@@ -70,6 +75,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NhanVienRepository.cs" />
+    <Compile Include="Repositories\QuanRepository.cs" />
+    <Compile Include="Repositories\TinhThanhRepository.cs" />
     <Compile Include="SDCTestDbContext.cs" />
   </ItemGroup>
   <ItemGroup>

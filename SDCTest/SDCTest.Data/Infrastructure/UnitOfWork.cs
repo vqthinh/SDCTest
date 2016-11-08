@@ -4,74 +4,22 @@ using SDCTest.Model.Models;
 
 namespace SDCTest.Data.Infrastructure
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
+        private readonly IDbFactory dbFactory;
         private SDCTestDbContext context = new SDCTestDbContext();
-        private NhanVienRepository nhanVienRepository;
-        private GenericRepository<Quan> quanRepository;
-        private GenericRepository<TinhThanh> tinhThanhRepository;
 
-        public NhanVienRepository NhanVienRepository
+        public UnitOfWork(IDbFactory dbFactory)
         {
-            get
-            {
-
-                if (this.nhanVienRepository == null)
-                {
-                    this.nhanVienRepository = new NhanVienRepository(context);
-                }
-                return nhanVienRepository;
-            }
+            this.dbFactory = dbFactory;
         }
-        public GenericRepository<Quan> QuanRepository
+        public SDCTestDbContext DbContext
         {
-            get
-            {
-
-                if (this.quanRepository == null)
-                {
-                    this.quanRepository = new GenericRepository<Quan>(context);
-                }
-                return quanRepository;
-            }
+            get { return context ?? (context = dbFactory.Init()); }
         }
-
-        public GenericRepository<TinhThanh> TinhThanhRepository
-        {
-            get
-            {
-
-                if (this.tinhThanhRepository == null)
-                {
-                    this.tinhThanhRepository = new GenericRepository<TinhThanh>(context);
-                }
-                return tinhThanhRepository;
-            }
-        }
-
-        public void Save()
+        public void Commit()
         {
             context.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }
