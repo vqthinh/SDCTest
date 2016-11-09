@@ -27,5 +27,7 @@ namespace SDCTest.Service.Interfaces
             Func<IQueryable<Quan>, IOrderedQueryable<Quan>> orderBy = null);
 
         IEnumerable<TinhThanh> GetTinhThanhs();
+
+        void Save();
     }
 }

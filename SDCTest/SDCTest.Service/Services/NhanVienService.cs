@@ -46,19 +46,16 @@ namespace SDCTest.Service.Services
         public void Insert(NhanVien nhanVien)
         {
             _nhanVienRepository.Insert(nhanVien);
-            _unitOfWork.Commit();
         }
 
         public void Update(NhanVien nhanVien)
         {
             _nhanVienRepository.Update(nhanVien);
-            _unitOfWork.Commit();
         }
 
         public void Delete(int id)
         {
             _nhanVienRepository.Delete(id);
-            _unitOfWork.Commit();
         }
 
         public IEnumerable<Quan> GetQuans(Expression<Func<Quan, bool>> filter = null,
@@ -70,6 +67,11 @@ namespace SDCTest.Service.Services
         public IEnumerable<TinhThanh> GetTinhThanhs()
         {
             return _tinhThanhRepository.Get(null, null);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
         }
     }
 }

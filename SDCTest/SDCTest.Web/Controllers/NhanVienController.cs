@@ -39,6 +39,7 @@ namespace SDCTest.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     _nhanVienService.Insert(nhanVien);
+                    _nhanVienService.Save();
                     return RedirectToAction("Index");
                 }
             }
@@ -65,7 +66,8 @@ namespace SDCTest.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                   _nhanVienService.Update(nhanVien);
+                    _nhanVienService.Update(nhanVien);
+                    _nhanVienService.Save();
                     return RedirectToAction("Index");
                 }
             }
@@ -80,6 +82,7 @@ namespace SDCTest.Web.Controllers
         public ActionResult Delete(int id)
         {
             _nhanVienService.Delete(id);
+            _nhanVienService.Save();
             return RedirectToAction("Index");
         }
 
