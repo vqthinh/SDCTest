@@ -4,27 +4,24 @@ using SDCTest.Data.Infrastructure;
 using SDCTest.Data.Repositories;
 using SDCTest.Model.Models;
 using System.Linq;
+using SDCTest.Service.Interfaces;
 
 namespace SDCTest.Web.Controllers
 {
     public class NhanVienController : Controller
     {
-        IUnitOfWork _unitOfWork;
-        INhanVienRepository _nhanVienRepository;
-        IQuanRepository _quanRepository;
-        ITinhThanhRepository _tinhThanhRepository;
+        private INhanVienService _nhanVienService;
 
-        public NhanVienController(IUnitOfWork unitOfWork, INhanVienRepository nhanVienRepository, IQuanRepository quanRepository, ITinhThanhRepository tinhThanhRepository)
+        public NhanVienController(INhanVienService nhanVienService)
         {
-            _unitOfWork = unitOfWork;
-            _nhanVienRepository = nhanVienRepository;
-            _quanRepository = quanRepository;
-            _tinhThanhRepository = tinhThanhRepository;
+            _nhanVienService = nhanVienService;
         }
+
+
         // GET: NhanVien
         public ActionResult Index(int page = 1, int pageSize = 3)
         {
-            return View(_nhanVienRepository.GetPaging(null, q => q.OrderBy(x => x.ID), page, pageSize));
+            return View(_nhanVienService.GetAllPaging(page, pageSize));
         }
 
         public ActionResult Create()
@@ -41,8 +38,7 @@ namespace SDCTest.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _nhanVienRepository.Insert(nhanVien);
-                    _unitOfWork.Commit();
+                    _nhanVienService.Insert(nhanVien);
                     return RedirectToAction("Index");
                 }
             }
@@ -56,7 +52,7 @@ namespace SDCTest.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            NhanVien nhanVien = _nhanVienRepository.GetByID(id);
+            NhanVien nhanVien = _nhanVienService.GetById(id);
             GetDropDown(nhanVien.QuanID, nhanVien.TinhThanhID);
             return View(nhanVien);
         }
@@ -69,8 +65,7 @@ namespace SDCTest.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _nhanVienRepository.Update(nhanVien);
-                    _unitOfWork.Commit();
+                   _nhanVienService.Update(nhanVien);
                     return RedirectToAction("Index");
                 }
             }
@@ -84,23 +79,21 @@ namespace SDCTest.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            NhanVien nhanVien = _nhanVienRepository.GetByID(id);
-            _nhanVienRepository.Delete(nhanVien);
-            _unitOfWork.Commit();
+            _nhanVienService.Delete(id);
             return RedirectToAction("Index");
         }
 
         private void GetDropDown(int? selectedQuan = null, int? selectedTinhThanh = null)
         {
-            var listQuan = _quanRepository.Get(filter: x => x.TinhThanhID == 1, orderBy: null);
-            var listTinhThanh = _tinhThanhRepository.Get(null, null);
+            var listQuan = _nhanVienService.GetQuans(x => x.TinhThanhID == 1,null);
+            var listTinhThanh = _nhanVienService.GetTinhThanhs();
             if (selectedQuan == null)
             {
                 ViewData["QuanID"] = new SelectList(listQuan, "ID", "TenQuan", 0);
             }
             else
             {
-                listQuan = _quanRepository.Get(x => x.TinhThanhID == selectedTinhThanh, null);
+                listQuan = _nhanVienService.GetQuans(x => x.TinhThanhID == selectedTinhThanh, null);
                 ViewData["QuanID"] = new SelectList(listQuan, "ID", "TenQuan", selectedQuan);
             }
             ViewData["TinhThanhID"] = new SelectList(listTinhThanh, "ID", "TenTinhThanh", selectedTinhThanh);
@@ -108,7 +101,7 @@ namespace SDCTest.Web.Controllers
 
         public JsonResult GetQuan(int id)
         {
-            var listQuan = _quanRepository.Get(x => x.TinhThanhID == id, null);
+            var listQuan = _nhanVienService.GetQuans(x => x.TinhThanhID == id, null);
             return Json(new SelectList(listQuan, "ID", "TenQuan"));
         }
 

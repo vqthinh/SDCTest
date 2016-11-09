@@ -8,6 +8,7 @@ using Owin;
 using SDCTest.Data;
 using SDCTest.Data.Infrastructure;
 using SDCTest.Data.Repositories;
+using SDCTest.Service.Services;
 using SDCTest.Web;
 using SDCTest.Web.Controllers;
 
@@ -38,7 +39,10 @@ namespace SDCTest.Web
             builder.RegisterAssemblyTypes(typeof(NhanVienRepository).Assembly)
                .Where(t => t.Name.EndsWith("Repository"))
                .AsImplementedInterfaces().AsSelf().InstancePerRequest();
-        
+            builder.RegisterAssemblyTypes(typeof(NhanVienService).Assembly)
+               .Where(t => t.Name.EndsWith("Service"))
+               .AsImplementedInterfaces().AsSelf().InstancePerRequest();
+
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

@@ -479,6 +479,10 @@
       <Project>{0e5bdd2c-e666-4c68-ab72-491b45b3f6ea}</Project>
       <Name>SDCTest.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SDCTest.Service\SDCTest.Service.csproj">
+      <Project>{93ef2837-4cc2-479a-8a7a-93c484811745}</Project>
+      <Name>SDCTest.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

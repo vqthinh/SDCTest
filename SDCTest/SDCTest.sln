@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDCTest.Data", "SDCTest.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDCTest.Web", "SDCTest.Web\SDCTest.Web.csproj", "{A5006CD4-58FB-412C-920E-A77B981A9E2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDCTest.Service", "SDCTest.Service\SDCTest.Service.csproj", "{93EF2837-4CC2-479A-8A7A-93C484811745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A5006CD4-58FB-412C-920E-A77B981A9E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5006CD4-58FB-412C-920E-A77B981A9E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5006CD4-58FB-412C-920E-A77B981A9E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93EF2837-4CC2-479A-8A7A-93C484811745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93EF2837-4CC2-479A-8A7A-93C484811745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93EF2837-4CC2-479A-8A7A-93C484811745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93EF2837-4CC2-479A-8A7A-93C484811745}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
