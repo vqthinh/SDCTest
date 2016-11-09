@@ -20,5 +20,7 @@ namespace SDCTest.Data
         public DbSet<Quan> Quans { get; set; }
 
         public DbSet<TinhThanh> TinhThanhs { get; set; }
+
+        public DbSet<Error> Errors { get; set; }
     }
 }

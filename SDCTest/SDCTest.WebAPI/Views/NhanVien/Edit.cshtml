@@ -1,0 +1,64 @@
+﻿@model SDCTest.Model.Models.NhanVien
+@{
+    ViewBag.Title = "Cập nhật nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Client/jsNhanVien.js"></script>
+<div class="widget">
+    <h3 class="section-title first-title">
+        <i class="icon-table"></i>Thông tin nhân viên
+    </h3>
+    <div class="widget-content-white glossed">
+        <div class="padded">
+
+            @using (Html.BeginForm("Create", "NhanVien", FormMethod.Post, new {@class = "form-horizontal", role = "form", enctype = "multipart/form-data", id = "form-nhanvien-update"}))
+            {
+                @Html.AntiForgeryToken()
+                <h3 class="form-title form-title-first">
+                    <i class="icon-terminal"></i> Nhập thông tin
+                </h3>
+                <div class="form-group">
+                    <div class="col-xs-10">@Html.HiddenFor(model => model.ID, new { @class = "form-control", @name = "ID", id = "txtID", @readonly = true })</div>
+                   </div>
+                     <div class="form-group">
+                        <label class="col-xs-2 control-label">Họ Tên</label>
+                        <div class="col-xs-10">@Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", @name = "HoTen", id = "txtHoTen" })</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Ngày sinh</label>
+                        <div class="col-xs-9">@Html.TextBoxFor(model => model.NgaySinh, "{0:dd/MM/yyyy}", new { @class = "form-control", @name = "NgaySinh", @id = "NgaySinh", @readonly = true })</div> 
+                        <div class="col-xs-1"  id="datePick" style="padding-left: 0px"><img src="~/Content/Client/Plugins/Datepicker/images/date.png" width="30" height="30"/>Chọn</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Email</label>
+                        <div class="col-xs-10">@Html.TextBoxFor(model => model.Email, new { @class = "form-control", @name = "Email", id = "txtEmail" })</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Số điện thoại</label>
+                        <div class="col-xs-10">@Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @name = "SDT", id = "txtSDT" })</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Thành phố</label>
+                        <div class="col-xs-3">@Html.DropDownListFor(model => model.TinhThanhID, null, new { @id = "TinhThanh", @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Quận</label>
+                        <div class="col-xs-3">@Html.DropDownListFor(model => model.QuanID, null, new { @id = "Quan", @class = "form-control" })</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-10 pull-right">
+                            <button type="submit" onclick="form.action = '/NhanVien/Edit'" class="btn btn-primary">Cập nhật</button>
+                            <a href="/NhanVien/Index" class="btn btn-warning">Hủy bỏ</a>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+</div>

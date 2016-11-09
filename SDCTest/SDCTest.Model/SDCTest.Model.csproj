@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\Quan.cs" />
     <Compile Include="Models\TinhThanh.cs" />

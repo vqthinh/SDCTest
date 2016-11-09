@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IErrorService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ErrorService.cs" />
     <Compile Include="Services\NhanVienService.cs" />
   </ItemGroup>
   <ItemGroup>
